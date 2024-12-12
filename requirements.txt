@@ -1,4 +1,4 @@
-streamlit 
-yfinance 
-ta-lib 
+streamlit
+yfinance
+pandas-ta
 matplotlib
