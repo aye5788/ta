@@ -57,8 +57,9 @@ if st.button("Analyze"):
         data = fetch_data(ticker, interval, period)
         st.write(f"Data Fetched: {data.shape[0]} rows.")
 
-        # Ensure 'Close' column is 1D
-        data['Close'] = data['Close'].astype(float)  # Ensure numeric and 1D
+        # Extract 'Close' column as a 1D array
+        if len(data['Close'].shape) > 1:
+            data['Close'] = data['Close'].squeeze()  # Convert (n, 1) to (n,)
         st.write(f"Debug: Close column shape is {data['Close'].shape}")  # Debugging step
 
         # Perform Technical Analysis
@@ -75,3 +76,4 @@ if st.button("Analyze"):
 
     except Exception as e:
         st.error(f"Error: {e}")
+
