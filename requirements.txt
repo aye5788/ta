@@ -2,4 +2,3 @@ streamlit
 yfinance 
 ta-lib 
 matplotlib
-pandas
