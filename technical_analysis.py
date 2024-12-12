@@ -57,6 +57,10 @@ if st.button("Analyze"):
         data = fetch_data(ticker, interval, period)
         st.write(f"Data Fetched: {data.shape[0]} rows.")
 
+        # Ensure 'Close' column is 1D
+        data['Close'] = data['Close'].astype(float)  # Ensure numeric and 1D
+        st.write(f"Debug: Close column shape is {data['Close'].shape}")  # Debugging step
+
         # Perform Technical Analysis
         analysis = analyze_technical_indicators(data)
 
